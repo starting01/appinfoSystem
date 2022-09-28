@@ -13,14 +13,21 @@ public class HomeController {
     public String index(){
         return "index";
     }
-    @RequestMapping("dev/toLogin")
+    @RequestMapping("/dev/toLogin")
     public String toDevLogin(){
-        return "devlogin";
+        return "/devlogin";
     }
-    @RequestMapping("manager/login")
+    @RequestMapping("/manager/login")
     public String toMaLogin(){
-        return "jsp/backendlogin";
+        return "/backendlogin";
     }
+
+    @RequestMapping("/dev/flatform/main")
+    public String toDevMain(){
+        return "/developer/main";
+    }
+
+
 
 
 

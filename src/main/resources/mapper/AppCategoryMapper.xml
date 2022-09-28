@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yqf.dao.AppCategoryMapper">
+    <select id="categoryLevel1List" resultType="appCategoryMapper">
+        select id,categoryName from app_category where categoryCode like 'ALL%'
+    </select>
+    <select id="categoryLevel2List" resultType="appCategoryMapper">
+        select id,categoryName from app_category where categoryCode like 'ALL%' and
+    </select>
+
+</mapper>

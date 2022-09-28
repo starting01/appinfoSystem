@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yqf.dao.AppInfoMapper">
+    <select id="appInfoList1" resultType="appInfo">
+        select a.id as id, a.softwareName, a.APKName, a.softwareSize, d2.valueName flatformName,
+               c3.categoryName categoryLevel1Name, c2.categoryName categoryLevel2Name, c1.categoryName categoryLevel3Name,
+               d1.valueName statusName, a.downloads downloads, v.versionNo versionNo
+        from app_category c1
+             join app_category c2 on c1.parentId = c2.id
+             join app_category c3 on c2.parentId = c3.id
+             join app_info a on a.categoryLevel3 = c1.id
+             join data_dictionary d1 on d1.typeCode = 'APP_STATUS' and d1.valueId = a.status
+             join data_dictionary d2 on d2.typeCode = 'APP_FLATFORM' and d2.valueId = a.flatformId
+             left join app_version v on a.versionId = v.id
+             order by a. desc;
+    </select>
+
+</mapper>
